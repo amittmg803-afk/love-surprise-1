@@ -1,0 +1,1156 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* ================= PASSWORD ================= */
+
+#passwordScreen{
+    position:fixed;
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b000d,
+            #000 70%
+        );
+}
+
+.lock{
+    font-size:65px;
+
+    margin-bottom:20px;
+
+    animation:pulse 1.5s infinite;
+}
+
+.private{
+    color:#888;
+
+    font-size:12px;
+
+    letter-spacing:6px;
+}
+
+#passwordScreen h1{
+    font-size:45px;
+
+    margin:20px 0;
+
+    color:#fff;
+}
+
+#passwordScreen p{
+    max-width:500px;
+
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+#password{
+    width:min(380px,90%);
+
+    padding:16px;
+
+    margin-top:25px;
+
+    border:none;
+    outline:none;
+
+    border-radius:5px;
+
+    background:#151515;
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:17px;
+}
+
+#enterBtn{
+    width:min(380px,90%);
+
+    padding:16px;
+
+    margin-top:12px;
+
+    border:none;
+
+    border-radius:5px;
+
+    background:#e50914;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#enterBtn:hover{
+    background:#ff1b25;
+
+    transform:scale(1.03);
+}
+
+#error{
+    display:none;
+
+    margin-top:15px;
+
+    color:#ff3344 !important;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+
+/* ================= ORIGINALS ================= */
+
+#originals{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:90000;
+
+    background:#000;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.originalContent{
+    width:90%;
+}
+
+.redN{
+    color:#e50914;
+
+    font-size:110px;
+
+    font-weight:900;
+
+    animation:logoZoom 3s forwards;
+}
+
+.originalContent h1{
+    font-size:25px;
+
+    letter-spacing:8px;
+
+    margin-top:15px;
+
+    opacity:0;
+
+    animation:appear 1s 1s forwards;
+}
+
+.originalContent p{
+    color:#777;
+
+    letter-spacing:5px;
+
+    margin-top:12px;
+
+    opacity:0;
+
+    animation:appear 1s 1.5s forwards;
+}
+
+.loading{
+    width:280px;
+
+    height:3px;
+
+    margin:30px auto;
+
+    background:#222;
+
+    overflow:hidden;
+}
+
+#loadingBar{
+    height:100%;
+
+    width:0;
+
+    background:#e50914;
+
+    animation:loading 4s linear forwards;
+}
+
+@keyframes loading{
+
+    to{
+        width:100%;
+    }
+
+}
+
+@keyframes logoZoom{
+
+    0%{
+        opacity:0;
+
+        transform:scale(.3);
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(1.2);
+    }
+
+}
+
+@keyframes appear{
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* ================= CINEMATIC INTRO ================= */
+
+#cinematicIntro{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:85000;
+
+    background:#000;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.present{
+    color:#777;
+
+    font-size:12px;
+
+    letter-spacing:7px;
+}
+
+.cinematicContent h1{
+    font-size:clamp(55px,10vw,120px);
+
+    margin:30px 0;
+
+    line-height:.9;
+
+    animation:titleMovie 3s forwards;
+}
+
+.cinematicContent h1 span{
+    color:#e50914;
+}
+
+.years{
+    color:#888;
+
+    font-size:12px;
+
+    letter-spacing:5px;
+}
+
+@keyframes titleMovie{
+
+    from{
+        opacity:0;
+
+        transform:scale(1.5);
+
+        letter-spacing:30px;
+    }
+
+    to{
+        opacity:1;
+
+        transform:scale(1);
+
+        letter-spacing:5px;
+    }
+
+}
+
+
+/* ================= ANNIVERSARY INTRO ================= */
+
+#anniversaryIntro{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:84000;
+
+    background:
+        radial-gradient(
+            circle,
+            #3a000d,
+            #000 70%
+        );
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.anniversaryContent .small{
+    letter-spacing:6px;
+
+    color:#aaa;
+
+    font-size:12px;
+}
+
+.anniversaryContent h1{
+    font-size:70px;
+
+    margin-top:25px;
+
+    letter-spacing:8px;
+}
+
+.anniversaryContent h2{
+    color:#e50914;
+
+    font-size:clamp(45px,8vw,100px);
+
+    margin:10px 0;
+
+    animation:anniversaryZoom 2s forwards;
+}
+
+.names{
+    font-size:25px;
+
+    letter-spacing:5px;
+}
+
+.anniversaryContent p{
+    margin-top:20px;
+
+    color:#888;
+
+    letter-spacing:5px;
+}
+
+@keyframes anniversaryZoom{
+
+    from{
+        transform:scale(.5);
+
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+
+        opacity:1;
+    }
+
+}
+
+
+/* ================= VIDEO ================= */
+
+#videoSection{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:80000;
+
+    background:#000;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+#loveVideo{
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+.videoShade{
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0,0,0,.8)
+        );
+}
+
+.videoTitle{
+    position:absolute;
+
+    left:40px;
+
+    bottom:50px;
+}
+
+.videoTitle span{
+    color:#e50914;
+
+    letter-spacing:5px;
+
+    font-size:12px;
+}
+
+.videoTitle h2{
+    margin-top:10px;
+
+    font-size:35px;
+}
+
+#skipVideo{
+    position:absolute;
+
+    right:25px;
+
+    bottom:25px;
+
+    padding:12px 20px;
+
+    border:1px solid #888;
+
+    background:rgba(0,0,0,.6);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+
+/* ================= MUSIC ================= */
+
+#musicButton{
+    display:none;
+
+    position:fixed;
+
+    right:20px;
+
+    top:20px;
+
+    z-index:5000;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#e50914;
+
+    color:#fff;
+
+    cursor:pointer;
+}
+
+
+/* ================= MAIN ================= */
+
+#main{
+    display:none;
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.heroBackground{
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.3),
+            #000
+        ),
+        url("photos/photo1.jpg")
+        center/cover;
+
+    animation:heroZoom 15s infinite alternate;
+}
+
+@keyframes heroZoom{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.12);
+    }
+
+}
+
+.heroContent{
+    position:relative;
+
+    z-index:2;
+}
+
+.netflixLabel{
+    color:#aaa;
+
+    letter-spacing:7px;
+
+    font-size:12px;
+}
+
+.anniversaryBadge{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:90px;
+
+    height:90px;
+
+    margin:25px auto;
+
+    border:2px solid #e50914;
+
+    border-radius:50%;
+
+    color:#e50914;
+
+    font-size:50px;
+
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(55px,10vw,130px);
+
+    line-height:.85;
+
+    margin:25px 0;
+}
+
+.hero h1 span{
+    color:#e50914;
+}
+
+.hero h2{
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.heroContent > p{
+    color:#aaa;
+}
+
+.watchButton{
+    margin-top:35px;
+
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:4px;
+
+    background:#e50914;
+
+    color:#fff;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.scroll{
+    position:absolute;
+
+    bottom:30px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+}
+
+
+/* ================= CHAPTER ================= */
+
+.chapterSection,
+.memoriesSection,
+.letterSection,
+.proposalSection{
+    min-height:100vh;
+
+    padding:120px 7%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.chapterNumber{
+    color:#e50914;
+
+    letter-spacing:6px;
+
+    font-size:12px;
+
+    margin-bottom:25px;
+}
+
+.chapterSection{
+    background:
+        radial-gradient(
+            circle,
+            #190006,
+            #000 70%
+        );
+}
+
+.chapterSection h2,
+.memoriesSection h2,
+.letterSection h2,
+.proposalSection h2{
+    font-size:clamp(45px,8vw,100px);
+
+    line-height:.95;
+
+    margin-bottom:35px;
+}
+
+.chapterSection h2 span,
+.memoriesSection h2 span,
+.letterSection h2 span{
+    color:#e50914;
+}
+
+.chapterSection p{
+    max-width:700px;
+
+    color:#aaa;
+
+    font-size:20px;
+
+    line-height:1.8;
+}
+
+
+/* ================= MEMORIES ================= */
+
+.memoriesSection{
+    background:#000;
+}
+
+.memoryIntro{
+    color:#777;
+
+    margin-bottom:35px;
+}
+
+.slider{
+    position:relative;
+
+    width:min(950px,95vw);
+
+    height:min(600px,65vh);
+
+    overflow:hidden;
+
+    background:#050505;
+
+    box-shadow:
+        0 0 100px rgba(229,9,20,.15);
+}
+
+.slide{
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    transform:scale(1.1);
+
+    transition:
+        opacity 1s,
+        transform 5s;
+}
+
+.slide.active{
+    opacity:1;
+
+    transform:scale(1);
+}
+
+.slide img{
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+.slide::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(0,0,0,.8)
+        );
+}
+
+.slide span{
+    position:absolute;
+
+    right:25px;
+
+    bottom:20px;
+
+    z-index:2;
+
+    letter-spacing:3px;
+}
+
+.sliderButtons{
+    display:flex;
+
+    gap:20px;
+
+    margin-top:25px;
+}
+
+.sliderButtons button{
+    width:55px;
+
+    height:45px;
+
+    background:#111;
+
+    border:1px solid #333;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+.sliderButtons button:hover{
+    background:#e50914;
+}
+
+
+/* ================= LETTER ================= */
+
+.letterSection{
+    background:
+        linear-gradient(
+            #000,
+            #080000
+        );
+}
+
+.letter{
+    width:min(850px,95%);
+
+    padding:50px;
+
+    min-height:450px;
+
+    border:1px solid #222;
+
+    background:rgba(255,255,255,.03);
+
+    text-align:left;
+
+    font-family:Georgia,serif;
+
+    font-size:20px;
+
+    line-height:2;
+}
+
+.signature{
+    margin-top:35px;
+
+    color:#e50914;
+
+    opacity:0;
+
+    transition:1s;
+
+    font-size:25px;
+}
+
+
+/* ================= PROPOSAL ================= */
+
+.proposalSection{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle,
+            #35000c,
+            #000 70%
+        );
+}
+
+.bigHeart{
+    font-size:85px;
+
+    animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+
+    50%{
+        transform:scale(1.25);
+    }
+
+}
+
+.proposalQuestion{
+    margin:30px 0;
+
+    color:#bbb;
+
+    font-size:22px;
+
+    line-height:1.8;
+}
+
+#proposalButton{
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:4px;
+
+    background:#e50914;
+
+    color:#fff;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.ring{
+    font-size:110px;
+
+    opacity:0;
+
+    transform:
+        translateY(100px)
+        scale(.2)
+        rotate(-90deg);
+
+    transition:1.5s;
+}
+
+.ring.show{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1)
+        rotate(0);
+}
+
+.proposalMessage{
+    display:none;
+
+    max-width:650px;
+
+    margin-top:30px;
+
+    font-size:23px;
+
+    line-height:1.8;
+}
+
+.proposalMessage h3{
+    color:#e50914;
+
+    font-size:40px;
+
+    margin-bottom:20px;
+}
+
+
+/* ================= FINAL ================= */
+
+.finalSection{
+    position:relative;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:#000;
+}
+
+.finalContent{
+    position:relative;
+
+    z-index:5;
+}
+
+.finalSmall{
+    color:#777;
+
+    letter-spacing:6px;
+
+    font-size:12px;
+}
+
+.finalSection h1{
+    font-size:clamp(45px,8vw,100px);
+
+    line-height:.9;
+
+    margin:30px 0;
+}
+
+.finalSection h1 span{
+    color:#e50914;
+}
+
+.finalSection h2{
+    font-size:35px;
+
+    margin-bottom:20px;
+}
+
+.finalSection p{
+    color:#777;
+
+    letter-spacing:4px;
+}
+
+.finalHeart{
+    font-size:80px;
+
+    margin:30px;
+
+    animation:heartbeat 1.2s infinite;
+}
+
+.finalSection h3{
+    font-size:35px;
+}
+
+.ending{
+    margin-top:25px;
+
+    line-height:2;
+
+    letter-spacing:1px !important;
+}
+
+
+/* ================= FIREWORK ================= */
+
+.firework{
+    position:absolute;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    animation:
+        explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+
+    from{
+        transform:scale(.2);
+
+        opacity:1;
+    }
+
+    to{
+        transform:scale(30);
+
+        opacity:0;
+    }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    #passwordScreen h1{
+        font-size:35px;
+    }
+
+    .redN{
+        font-size:80px;
+    }
+
+    .originalContent h1{
+        font-size:18px;
+
+        letter-spacing:5px;
+    }
+
+    .anniversaryContent h1{
+        font-size:50px;
+    }
+
+    .anniversaryContent h2{
+        font-size:45px;
+    }
+
+    .names{
+        font-size:18px;
+    }
+
+    .videoTitle{
+        left:20px;
+
+        bottom:40px;
+    }
+
+    .videoTitle h2{
+        font-size:23px;
+    }
+
+    .slider{
+        height:55vh;
+    }
+
+    .letter{
+        padding:25px;
+
+        font-size:17px;
+    }
+
+    .proposalQuestion{
+        font-size:18px;
+    }
+
+}
